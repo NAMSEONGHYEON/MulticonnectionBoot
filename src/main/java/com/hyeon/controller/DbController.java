@@ -55,10 +55,11 @@ public class DbController {
     @RequestMapping("/insdel")
     public String insdel() throws Exception{
     	try {
-    		dbService.getins();
         	dbService.getdel();
+    		dbService.getins();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return "error";
 		}
     	return "success";
