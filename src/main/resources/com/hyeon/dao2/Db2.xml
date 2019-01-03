@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyeon.dao2.DbMapper2">
+    
+    <select id="getCount2" resultType="java.lang.String">
+    	SELECT COUNT(*) FROM TEST02_SAMPLE
+    </select>
+    
+    <insert id="getins">
+    	insert into test02_sample (id, name, phone) values(6,6,6)
+    </insert>
+
+</mapper>

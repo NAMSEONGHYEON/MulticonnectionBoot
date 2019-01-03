@@ -14,29 +14,26 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
-@MapperScan(basePackages="com.hyeon.dao", sqlSessionFactoryRef="SqlSessionFactory")
+@MapperScan(basePackages="com.hyeon.dao2", sqlSessionFactoryRef="SqlSessionFactory2")
 @EnableTransactionManagement
-public class DatabaseConfig {
+public class DatabaseConfig2 {
  
-	@Bean(name = "dataSource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.db1.datasource")
-    public DataSource dataSource() {
+	@Bean(name = "dataSource2")
+    @ConfigurationProperties(prefix = "spring.db2.datasource")
+    public DataSource dataSource2() {
         return DataSourceBuilder.create().build();
     }
 	
-    @Bean(name = "SqlSessionFactory")
-    @Primary
-    public  SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource, ApplicationContext applicationContext) throws Exception {
+    @Bean(name = "SqlSessionFactory2")
+    public  SqlSessionFactory sqlSessionFactory2(@Qualifier("dataSource2") DataSource dataSource2, ApplicationContext applicationContext) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:com/hyeon/dao/*.xml"));
+        sqlSessionFactoryBean.setDataSource(dataSource2);
+        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:com/hyeon/dao2/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
     
-    @Bean(name = "SqlSessionTemplate")
-    @Primary
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
-      return new SqlSessionTemplate(sqlSessionFactory);
+    @Bean(name = "SqlSessionTemplate2")
+    public SqlSessionTemplate sqlSessionTemplate2(SqlSessionFactory sqlSessionFactory2) throws Exception {
+      return new SqlSessionTemplate(sqlSessionFactory2);
     }
 }

@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "spring.db1.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.hyeon.DatabaseConfig",
+      "sourceMethod": "public javax.sql.DataSource dataSource() "
+    },
+    {
+      "name": "spring.db2.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.hyeon.DatabaseConfig2",
+      "sourceMethod": "public javax.sql.DataSource dataSource2() "
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

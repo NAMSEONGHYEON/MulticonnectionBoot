@@ -18,14 +18,49 @@ public class DbController {
         return "Hello World";
     }
  
-    @RequestMapping("/now")
-    public @ResponseBody String now() throws Exception{
-        return dbService.getDual();
-    }
-    
     @RequestMapping("/count")
     public @ResponseBody String count() throws Exception{
-    	dbService.getCount();
+    	String test01 = dbService.getCount();
+    	String test02 = dbService.getCount2();
+    	
+    	System.out.println("test01_sample의 쿼리 갯수 : " + test01);
+    	System.out.println("test02_sample의 쿼리 개수 : " + test02);
+    	
     	return "Test";
+    }
+    
+    @RequestMapping("/del")
+    public String del() throws Exception{
+    	
+    	try {
+    		dbService.getdel();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "error";
+		}
+    	return "success";
+    }
+    
+    @RequestMapping("/ins")
+    public String ins() throws Exception{
+    	try {
+    		dbService.getins();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "error";
+		}
+    	return "success";
+    }
+    
+    @RequestMapping("/insdel")
+    public String insdel() throws Exception{
+    	try {
+    		dbService.getins();
+        	dbService.getdel();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "error";
+		}
+    	return "success";
     }
 }
